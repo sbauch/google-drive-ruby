@@ -406,7 +406,7 @@ module GoogleDrive
             </entry>
           EOS
 
-          result = @session.request(:post, self.spreadsheet.tables_feed_url, :data => xml)
+          result = @session.request(:post, self.spreadsheet.tables_feed_url, :data => xml, :header => {"Content-Type" => "application/atom+xml;charset=utf-8", "If-Match" => "*"})
           return Table.new(@session, result)
           
         end
