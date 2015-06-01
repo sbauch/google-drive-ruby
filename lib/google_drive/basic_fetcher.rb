@@ -28,6 +28,8 @@ module GoogleDrive
           http.verify_mode = OpenSSL::SSL::VERIFY_NONE
           # No timeout. It can take long e.g., when it tries to fetch a large file.
           http.read_timeout = nil
+          header = auth_header(auth).merge(extra_header)
+          raise header.inspect
           http.start() do
             path = uri.path + (uri.query ? "?#{uri.query}" : "")
             header = auth_header(auth).merge(extra_header)
