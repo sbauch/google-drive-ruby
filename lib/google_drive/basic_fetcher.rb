@@ -29,7 +29,11 @@ module GoogleDrive
           # No timeout. It can take long e.g., when it tries to fetch a large file.
           http.read_timeout = nil
           header = auth_header(auth).merge(extra_header)
-          raise header.inspect
+          
+          p "==========================================="
+          p header
+          p "==========================================="
+          
           http.start() do
             path = uri.path + (uri.query ? "?#{uri.query}" : "")
             header = auth_header(auth).merge(extra_header)
