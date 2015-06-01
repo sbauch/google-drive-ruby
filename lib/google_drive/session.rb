@@ -424,6 +424,9 @@ module GoogleDrive
           url = url.gsub(%r{^http://}, "https://")
           data = params[:data]
           auth = params[:auth] || :wise
+          
+          raise auth.inspect
+          
           if params[:header]
             extra_header = params[:header]
           elsif data
